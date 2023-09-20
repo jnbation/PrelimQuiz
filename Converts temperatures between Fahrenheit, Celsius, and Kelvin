@@ -1,0 +1,30 @@
+fun convertTemperature(
+    value: Double,
+    fromUnit: String,
+    toUnit: String
+): Double {
+    if (value < -273.15 && (fromUnit == "Celsius" || fromUnit == "Kelvin")) {
+        throw IllegalArgumentException("Temperature must be equal to or above absolute zero.")
+    } else if (value < -459.67 && fromUnit == "Fahrenheit") {
+        throw IllegalArgumentException("Temperature must be equal to or above absolute zero.")
+    }
+
+    return when (fromUnit) {
+        "Celsius" -> when (toUnit) {
+            "Fahrenheit" -> (value * 9/5) + 32
+            "Kelvin" -> value + 273.15
+            else -> value
+        }
+        "Fahrenheit" -> when (toUnit) {
+            "Celsius" -> (value - 32) * 5/9
+            "Kelvin" -> (value + 459.67) * 5/9
+            else -> value
+        }
+        "Kelvin" -> when (toUnit) {
+            "Celsius" -> value - 273.15
+            "Fahrenheit" -> (value * 9/5) - 459.67
+            else -> value
+        }
+        else -> value
+    }
+}

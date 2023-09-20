@@ -1,0 +1,6 @@
+fun main() {
+    val amountInUSD = 100.0
+    val exchangeRate = 1.2 // Example: 1 USD to EUR exchange rate
+    val convertedAmount = convertCurrency(amountInUSD, exchangeRate)
+    println("Converted amount: $convertedAmount EUR")
+}
